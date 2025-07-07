@@ -10,3 +10,8 @@ class Solution:
         while right - 1 > 0 and arr[right - 1] > arr[right]:
             right -=1
         return left == right 
+    
+# Separate two-pointer approach
+# Increase left index till it does not fulfill the condition
+# Decrease right index till it does not fulfill the condition
+# Compare left == right?

@@ -16,3 +16,7 @@ class Solution:
                 right -= 1
 
         return max_area
+    
+  # Two-pointer method , going from left and right
+  # Iterative approach to constantly check max area
+  # Finally return max area when loop finishes
