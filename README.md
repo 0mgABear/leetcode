@@ -6,13 +6,17 @@
 
 ## Structure of Repository:
 
-|- Data Structure
-|
-|-- Difficulty (Easy / Medium / Hard)
-|
-|--- Question Number
-|
-|---- Question Number + Language Suffix (e.g. 11.py , 11.ts )
+Leetcode/
+├── Data Structure/
+│ ├── Easy/
+│ │ ├── 1/
+│ │ │ └── 1.py
+│ │ │ └── 1.ts
+│ ├── Medium/
+│ │ ├── 11/
+│ │ │ └── 11.py
+│ │ │ └── 11.ts
+│ ├── Hard/
 
 ### Agenda:
 
