@@ -6,6 +6,7 @@
 
 ## Structure of Repository:
 
+```
 Leetcode/
 ├── Data Structure/
 │ ├── Easy/
@@ -17,6 +18,7 @@ Leetcode/
 │ │ │ └── 11.py
 │ │ │ └── 11.ts
 │ ├── Hard/
+```
 
 ### Agenda:
 
