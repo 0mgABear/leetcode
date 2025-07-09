@@ -7,8 +7,11 @@
 ## Structure of Repository:
 
 |- Data Structure
+|
 |-- Difficulty (Easy / Medium / Hard)
+|
 |--- Question Number
+|
 |---- Question Number + Language Suffix (e.g. 11.py , 11.ts )
 
 ### Agenda:
