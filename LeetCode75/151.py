@@ -37,3 +37,32 @@
 class Solution:
     def reverseWords(self, s: str) -> str:
         return " ".join(s.split()[::-1])
+    
+
+# s.split() — splits into list of words, automatically trims leading/trailing spaces and handles multiple spaces between words
+# [::-1] — reverses the list
+# " ".join() — joins back with a single space
+
+# No Built In
+def reverseWords(s: str) -> str:
+    words = []
+    word = ""
+    for char in s:
+        if char != " ":
+            word += char
+        else:
+            if word:
+                words.append(word)
+                word = ""
+    if word:
+        words.append(word)  # catch last word
+
+    # reverse words array (two pointer)
+    left, right = 0, len(words) - 1
+    while left < right:
+        words[left], words[right] = words[right], words[left]
+        left += 1
+        right -= 1
+
+    return ' '.join(words)
+
