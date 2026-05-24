@@ -29,6 +29,25 @@
 # Output: [-6,2,4]
 # Explanation: The asteroid -6 makes the asteroid 3 and 5 explode, and then continues going left. On the other side, the asteroid 2 makes the asteroid -1 explode and then continues going right, without reaching asteroid 4.
 
+# Key insight: Collision only happens when stack top is positive (→) and incoming is negative (←). They're moving toward each other.
+
+# Collision only happens when stack top is positive (→) and incoming is negative (←)
+# Four cases:
+# 1. positive → vs negative ← : COLLISION (moving toward each other)
+# 2. positive → vs positive → : no collision (same direction)
+# 3. negative ← vs negative ← : no collision (same direction)
+# 4. negative ← vs positive → : no collision (moving apart)
+
+# Three outcomes when collision occurs:
+# 1. stack top smaller  → stack top explodes, continue (chain collision possible)
+# 2. equal size         → both explode, break
+# 3. stack top larger   → incoming explodes, break
+
+# Python while/else trick:
+# - else block runs only if while exits naturally (condition false)
+# - else is skipped if break fires
+# - used here to push asteroid only if it survived all collisions
+
 class Solution:
     def asteroidCollision(self, asteroids: List[int]) -> List[int]:
         stack = []
