@@ -28,6 +28,11 @@
 # 1 <= nums1.length, nums2.length <= 1000
 # -1000 <= nums1[i], nums2[i] <= 1000
 
+# #Pattern Recognition
+# 1. Distinct / Unique
+# 2. Not present in / membership checking
+# 3. Comparing 2 collections
+
 # Solution !: 
 def findDifference(self, nums1: List[int], nums2: List[int]) -> List[List[int]]:
     set1, set2 = set(nums1), set(nums2)

@@ -40,7 +40,7 @@
 # The number of nodes in the list is in the range [1, 105].
 # 1 <= Node.val <= 10
 
-#Solution 1: 2 pointer
+# Solution 1: 2 pointer
 
 class Solution:
     def deleteMiddle(self, head: Optional[ListNode]) -> Optional[ListNode]:
@@ -56,3 +56,4 @@ class Solution:
 
             slow.next = slow.next.next
             return head
+    
