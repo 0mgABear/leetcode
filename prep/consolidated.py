@@ -1,16 +1,65 @@
-#724 - find pivot index
-#1991 - find the middle index in array
+#1. Two Sum
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        seen = {}
+        for i, num in enumerate(nums):
+            if target - num in seen:
+                return [seen[target-num], i]
+            seen[num] = i
+
+#36. Valid Sudoku
 
 class Solution:
-  def pivotIndex(self, nums: List[int]) -> int:
-    total = sum(nums)
-    left = 0
-    for i in range(len(nums)):
-      right = total - left - nums[i]
-      if right == left:
-        return i
-      left += nums[i]
-    return -1
+    def isValidSudoku(self, board: List[List[str]]) -> bool:
+        seen = set()
+        for r in range(9):
+            for c in range(9):
+                value = board[r][c]
+                if value == ".":
+                    continue
+                if(("row", r, value) in seen or
+                    ("col", c, value) in seen or
+                    ("box", r//3, c//3, value) in seen):
+                    return False
+                seen.add(("row", r, value))
+                seen.add(("col", c, value))
+                seen.add(("box", r//3, c//3, value))
+        return True
+
+#49. Group Anagrams
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        map = {}
+        for s in strs:
+            key = "".join(sorted(s))
+            if key not in map:
+                map[key] = []
+            map[key].append(s)
+        return list(map.values())
+
+#128. Longest Consecutive Sequence
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        numSet = set(nums)
+        longest = 0
+        for n in numSet:
+            if (n - 1) not in numSet:
+                length = 0
+                while (n + length) in numSet:
+                    length += 1
+                longest = max(length, longest)
+        return longest
+             
+
+#217. Contains Duplicate
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        seen = set()
+        for n in nums:
+            if n in seen:
+                return True
+            seen.add(n)               
+        return False
     
 #238. Product of Array Except Self
 # No division + division by zeros will break it
@@ -27,6 +76,67 @@ class Solution:
             answer[i] = right * answer[i]
             right *= nums[i]
         return answer
+
+#242. Valid Anagram
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        if len(s) != len(t):
+            return False
+        return Counter(s) == Counter(t)
+    
+#271. Encode and Decode Strings:
+class Solution:
+
+    def encode(self, strs: List[str]) -> str:
+        res = ""
+        for s in strs:
+            res += str(len(s)) + "#" + s
+        return res
+
+
+    def decode(self, s: str) -> List[str]:
+        res, i = [], 0
+        while i < len(s):
+            j = i
+            while s[j] != "#":
+                j += 1
+            length = int(s[i:j])
+            res.append(s[j + 1 : j + 1 + length])
+            i = j + 1 + length
+        return res
+
+
+
+#347. Top K Frequent Elements
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        count = Counter(nums)
+        buckets = [[] for _ in range(len(nums)+ 1)]
+
+        for num, freq in count.items():
+            buckets[freq].append(num)
+        result = []
+        for freq in range(len(buckets) -1, 0, -1):
+            for num in buckets[freq]:
+                result.append(num)
+                if len(result) == k:
+                    return result
+
+#724 - find pivot index
+#1991 - find the middle index in array
+
+class Solution:
+  def pivotIndex(self, nums: List[int]) -> int:
+    total = sum(nums)
+    left = 0
+    for i in range(len(nums)):
+      right = total - left - nums[i]
+      if right == left:
+        return i
+      left += nums[i]
+    return -1
+    
+
 
 #567. Permutation in String
 class Solution:
